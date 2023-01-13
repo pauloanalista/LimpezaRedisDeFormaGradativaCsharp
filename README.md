@@ -18,7 +18,7 @@ public async Task ExpirarTodos()
               do
               {
                   var server = redis.GetServer(vetConexao[0]);
-                  var redisResult = server.Execute("SCAN", new object[] { nextCursor.ToString(), "MATCH", "*", "COUNT", "10" });
+                  var redisResult = server.Execute("SCAN", new object[] { nextCursor.ToString(), "MATCH", "*", "COUNT", "100" });
                   var innerResult = (RedisResult[])redisResult;
                   nextCursor = int.Parse((string)innerResult[0]);
                   IEnumerable<string> resultLines = ((string[])innerResult[1]);
